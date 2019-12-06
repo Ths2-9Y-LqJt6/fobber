@@ -35,13 +35,13 @@ $eventCount = 6;
 # Use
 
 The assumption is that you're going to use the three fields we use
-and that the "color" will be an HTML color, possibly two separated by
+and that the `color` will be an HTML color, possibly two separated by
 a comma. Have something do a `POST` with the values you defined
 in `$requiredVars`.  Have a device, we use a Raspberry Pi attached
 to big TV, show this web page.  Enjoy! 
 
-You can get consume the JSON feed of events externally by simply
-doing a `GET` request to `/ajax.php`. 
+If you have another use of the events on an external system,
+you access JSON feed of events by doing a `GET` request to `/ajax.php`. 
 
 ## Development
 
