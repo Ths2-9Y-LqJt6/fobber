@@ -45,7 +45,7 @@ you access JSON feed of events by doing a `GET` request to `/ajax.php`.
 
 ## Development
 
-Not much to say here, but I use a local PHP web server:
+I use a local PHP web server running in the directory of the repo:
 
 ```bash
 php -S localhost:8001
