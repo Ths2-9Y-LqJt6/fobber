@@ -9,7 +9,7 @@
  * @return string cleansed!!
  */
 function cleanse($input){
-    $result = trim(preg_replace("/[^A-Za-z0-9\. ]/", '', $input));
+    $result = trim(preg_replace("/[^A-Za-z0-9\.,# ]/", '', $input));
     return $result;
 }
 
@@ -60,14 +60,14 @@ function saveFob($input, $validVars, $cleanseFunction, $location = null){
  * @param
  * @return stdClass of arrays of json stored in file
  */
-function getFob($location = null){
+function getFob($location = null, $fobberCount = 10){
     $resultObj = new  stdClass();
     $resultObj->results = array();
 
     if ($location != null) {
         $location = cleanse($location);
         if ($location != '' && is_file($location) && is_readable($location)){
-            $linesTxt = shell_exec("tail -n 10 $location");
+            $linesTxt = shell_exec("tail -n $fobberCount $location");
             $linesRawAry = explode("\n", $linesTxt);
 
             foreach ($linesRawAry as $lineTxt) {

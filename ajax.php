@@ -1,5 +1,12 @@
 <?php
-require_once ('helpers.php');
-$file = 'fobbers.txt';
-$recentFobsObj = getFob($file);
+if(is_file('config.php') && is_file('helpers.php')) {
+    require_once('helpers.php');
+    require_once('config.php');
+} else {
+    $err = new stdClass();
+    $err->status = 'config.php</code> or <code>helpers.php</code> files not found';
+    print json_encode($err);
+    exit();
+}
+$recentFobsObj = getFob($file, $eventCount);
 print json_encode($recentFobsObj);

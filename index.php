@@ -1,98 +1,41 @@
 <?php
 
-/**
- * super simple record POSTs,  show last 10 users who fobbed in from POSTs, AJAX refresh every 1 second
- */
+if(is_file('config.php') && is_file('helpers.php')) {
+    require_once('helpers.php');
+    require_once('config.php');
+} else {
+    echo '<h1>Error</h1><code>config.php</code> or <code>helpers.php</code> files not found :(';
+    exit();
+}
 
-require_once ('helpers.php');
+if ($logo !== null){
+    $logoHtml = '<center><img class="inner" id="thelogo" src="' . $logo . '"></center>';
+} else {
+    $logoHtml = '';
+}
 
-$file = 'fobbers.txt';
-$requiredVars = array('user', 'handle', 'color');
-$varCount = sizeof($requiredVars);
-
+// handle POSTs of events
 if (isset($_POST) && sizeof($_POST)>0){
-    $savedObj = saveFob($_POST, $requiredVars, 'cleanse', $file);
+    $savedObj = saveFob($_POST, $requiredVars, $cleanseFunction, $file);
     print $savedObj->status;
     exit();
 }
+
 ?>
+<html>
+    <head>
+        <title>Recent Fobs</title>
+    </head>
 
-<div id="myData"></div>
+    <body>
+        <h1>Recent Fobs</h1>
+        <div id="content">
+            <div class="inner" id="recentFobs"></div>
+            <?php echo $logoHtml ?>
+        </div>
 
-<script>
-    function getRecentFobs() {
+        <script type="text/javascript" src="fobber.js"></script>
+        <link rel="stylesheet"  href="fobber.css" />
 
-        // huge thanks to https://howtocreateapps.com/fetch-and-display-json-html-javascript/ !!
-        fetch('ajax.php')
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                appendData(data);
-            })
-            .catch(function (err) {
-                console.log('error: ' + err);
-            });
-
-        function appendData(data) {
-            var mainContainer = document.getElementById("myData");
-            mainContainer.innerHTML = '';
-            var showme = '';
-            if(data.status === 'good') {
-                for (var i = 9; i < Object.keys(data.results).length; i--) {
-                    var div = document.createElement("div");
-                    div.innerHTML = data.results[i].handle + " " + timeDifference(data.results[i].time) + "";
-                    mainContainer.appendChild(div);
-                }
-            } else {
-                var div = document.createElement("div");
-                div.innerHTML = 'Error: ' + data.status;
-                mainContainer.appendChild(div);
-            }
-        }
-    }
-
-    // https://stackoverflow.com/a/6109105
-    function timeDifference(previous) {
-
-        current = new Date().getTime();
-        previous = previous*1000;
-        console.log('current: ' + current + ' prev: ' + previous);
-        var msPerMinute = 60 * 1000;
-        var msPerHour = msPerMinute * 60;
-        var msPerDay = msPerHour * 24;
-        var msPerMonth = msPerDay * 30;
-        var msPerYear = msPerDay * 365;
-
-        var elapsed = current - previous;
-
-        if (elapsed < msPerMinute) {
-            return Math.round(elapsed/1000) + ' seconds ago';
-        }
-
-        else if (elapsed < msPerHour) {
-            return Math.round(elapsed/msPerMinute) + ' minutes ago';
-        }
-
-        else if (elapsed < msPerDay ) {
-            return Math.round(elapsed/msPerHour ) + ' hours ago';
-        }
-
-        else if (elapsed < msPerMonth) {
-            return 'approximately ' + Math.round(elapsed/msPerDay) + ' days ago';
-        }
-
-        else if (elapsed < msPerYear) {
-            return 'approximately ' + Math.round(elapsed/msPerMonth) + ' months ago';
-        }
-
-        else {
-            return 'hella years ago';
-        }
-    }
-
-    getRecentFobs();
-    window.setInterval(function(){
-        getRecentFobs();
-    }, 1000);
-</script>
+    </body>
+</html>
