@@ -28,9 +28,9 @@ if (isset($_POST) && sizeof($_POST)>0){
     </head>
 
     <body>
+        <?php echo $logoHtml ?>
         <h1>Recent Fobs</h1>
         <div id="content">
-            <?php echo $logoHtml ?>
             <div class="inner" id="recentFobs"></div>
         </div>
 
