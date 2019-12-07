@@ -9,7 +9,7 @@ if(is_file('config.php') && is_file('helpers.php')) {
 }
 
 if ($logo !== null){
-    $logoHtml = '<center><img class="inner" id="thelogo" src="' . $logo . '"></center>';
+    $logoHtml = '<img class="inner" id="thelogo" src="' . $logo . '">';
 } else {
     $logoHtml = '';
 }
@@ -30,8 +30,8 @@ if (isset($_POST) && sizeof($_POST)>0){
     <body>
         <h1>Recent Fobs</h1>
         <div id="content">
-            <div class="inner" id="recentFobs"></div>
             <?php echo $logoHtml ?>
+            <div class="inner" id="recentFobs"></div>
         </div>
 
         <script type="text/javascript" src="fobber.js"></script>

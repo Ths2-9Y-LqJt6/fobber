@@ -1,6 +1,7 @@
 /* thanks https://getflywheel.com/layout/svg-animations-css-how-to/ */
-body{
+body {
     background: black;
+    font-family: Helvetica;
 }
 @keyframes spin {
     from {transform:rotate(0deg);}
@@ -32,4 +33,7 @@ h1 {
 #recentFobs div:first-child {
     padding-top: -0px;
     font-size: 20pt;
+}
+#thelogo {
+    float: right;
 }
