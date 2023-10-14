@@ -7,6 +7,9 @@ if(is_file('config.php') && is_file('helpers.php')) {
     echo '<h1>Error</h1><code>config.php</code> or <code>helpers.php</code> files not found :(';
     exit();
 }
+if(is_file('newCleanse.php')) {
+    require_once('newCleanse.php');
+}
 
 if ($logo !== null){
     $logoHtml = '<img class="inner" id="thelogo" src="' . $logo . '">';
