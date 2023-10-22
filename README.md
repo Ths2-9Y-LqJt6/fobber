@@ -57,7 +57,7 @@ By default, fobber is very strict with what it writes to disk via [the `cleanse(
    For example, this function will allow Unicode:
    ```php
    function newCleanse($input){
-     $result = trim(preg_replace('/[^\w\d\p{L}]/u', "", $input));
+     $result = trim(preg_replace('/[^\w\d\p{L} -|]/u', "", $input));
      return $result;
    }   
    ```
