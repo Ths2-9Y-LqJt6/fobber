@@ -103,10 +103,10 @@ function timeDifference(previous) {
         return Math.round(elapsed/msPerHour ) + ' hours ago';
     }
     else if (elapsed < msPerMonth) {
-        return 'approximately ' + Math.round(elapsed/msPerDay) + ' days ago';
+        return ' ' + Math.round(elapsed/msPerDay) + ' days ago';
     }
     else if (elapsed < msPerYear) {
-        return 'approximately ' + Math.round(elapsed/msPerMonth) + ' months ago';
+        return ' ' + Math.round(elapsed/msPerMonth) + ' months ago';
     }
     else {
         return 'hella years ago';

@@ -31,11 +31,21 @@ if (isset($_POST) && sizeof($_POST)>0){
     </head>
 
     <body>
-        <?php echo $logoHtml ?>
-        <h1>Recent Fobs</h1>
-        <div id="content">
-            <div class="inner" id="recentFobs"></div>
+
+        <div id="members">
+            <h1>Members</h1>
+            <div id="content2">
+                <div class="inner" id="membersInner"></div>
+            </div>
         </div>
+
+        <div id="fobs">
+            <h1>Recent Fobs</h1>
+            <div id="content">
+                <div class="inner" id="recentFobs"></div>
+            </div>
+        </div>
+        <?php echo $logoHtml ?>
 
         <script type="text/javascript" src="fobber.js"></script>
         <link rel="stylesheet"  href="fobber.css" />

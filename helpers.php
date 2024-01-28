@@ -87,3 +87,21 @@ function getFob($location = null, $fobberCount = 10){
     }
     return $resultObj;
 }
+
+function cacheMemberStats($location, $json){
+    // check for good file to save in
+    if (!is_file($location) || !is_writable($location)) {
+        error_log("can't save json for membership!");
+        return false;
+    } else {
+        file_put_contents($location, $json);
+    }
+}
+
+function readMemberStatsCach($location){
+    return file_get_contents($location);
+}
+
+function retrieveMemberStatsFromRemote($url){
+    return file_get_contents($url);
+}

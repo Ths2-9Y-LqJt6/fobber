@@ -1,42 +1,43 @@
 /* thanks https://getflywheel.com/layout/svg-animations-css-how-to/ */
 body {
     background: black;
-    font-family: Helvetica;
+    font-family: Helvetica, serif;
 }
 @keyframes spin {
     from {transform:rotate(0deg);}
     to {transform:rotate(360deg);}
 }
-svg {
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    max-height:15cm;
-    max-width:15cm;
-    width: 20%;
-    height: 20%;
-    fill: #50c6db;
-    transform: translate(50%, 50%);
-}
+
 #thelogo {
-    animation: spin 520s infinite linear;
+    animation: spin 120s infinite linear;
     filter: invert(1.0);
 }
 h1 {
     color: white;
 }
-#recentFobs div {
+#recentFobs div, #membersInner div {
     font-size: 15pt;
     color: white;
     padding-top: 5px;
     padding-left: 2em;
     text-indent: -2em;
+    filter: drop-shadow(1px 1px black);
+    z-index: 10;
 }
 #recentFobs div:first-child {
-    padding-top: -0px;
+    padding-top: 0px;
     font-size: 20pt;
 }
 #thelogo {
     float: right;
-    width: 60%;
+    width: 64%;
+    padding-right: 30%;
+    margin-top: -10%;
+    z-index: -10;
+    position: relative;
+}
+
+#members {
+    float: right;
+    margin-top:-21px;
 }
