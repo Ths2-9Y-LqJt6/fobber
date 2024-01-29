@@ -10,9 +10,7 @@ if(is_file('config.php') && is_file('helpers.php')) {
 }
 
 if($_GET && $_GET['membership']){
-    $membershipJson = retrieveMemberStatsFromRemote($remoteMembershipUrl);
-    cacheMemberStats($membersCache, $membershipJson);
-    print $membershipJson;
+    print readMemberStatsCache($membersCacheFile);
 } else {
     $recentFobsObj = getFob($file, $eventCount);
     print json_encode($recentFobsObj);

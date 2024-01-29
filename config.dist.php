@@ -4,7 +4,7 @@
 $file = 'fobbers.txt';
 
 // where to cache json
-$membersCache = 'members.json';
+$membersCacheFile = 'members.json';
 
 // remote membership location of https://github.com/synshop/ShopIdentifyer/
 $remoteMembershipUrl = 'https://membership.example.com';

@@ -98,8 +98,12 @@ function cacheMemberStats($location, $json){
     }
 }
 
-function readMemberStatsCach($location){
-    return file_get_contents($location);
+function readMemberStatsCache($location){
+    if (is_file($location)){
+        return file_get_contents($location);
+    } else {
+        return json_encode(array('total_vetted'=>"no cache file"));
+    }
 }
 
 function retrieveMemberStatsFromRemote($url){
