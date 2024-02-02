@@ -87,3 +87,27 @@ function getFob($location = null, $fobberCount = 10){
     }
     return $resultObj;
 }
+
+function cacheMemberStats($location, $json){
+    // check for good file to save in
+//    if (!is_file($location) || !is_writable($location)) {
+    if ( !is_writable(dirname($location))) {
+        error_log("ERROR can't save json for membership!");
+        return false;
+    } else {
+        error_log(" saving json for membership!");
+        return file_put_contents($location, $json);
+    }
+}
+
+function readMemberStatsCache($location){
+    if (is_file($location)){
+        return file_get_contents($location);
+    } else {
+        return json_encode(array('total_vetted'=>"no cache file"));
+    }
+}
+
+function retrieveMemberStatsFromRemote($url){
+    return file_get_contents($url);
+}
