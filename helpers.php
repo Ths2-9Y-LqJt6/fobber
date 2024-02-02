@@ -90,11 +90,13 @@ function getFob($location = null, $fobberCount = 10){
 
 function cacheMemberStats($location, $json){
     // check for good file to save in
-    if (!is_file($location) || !is_writable($location)) {
-        error_log("can't save json for membership!");
+//    if (!is_file($location) || !is_writable($location)) {
+    if ( !is_writable(dirname($location))) {
+        error_log("ERROR can't save json for membership!");
         return false;
     } else {
-        file_put_contents($location, $json);
+        error_log(" saving json for membership!");
+        return file_put_contents($location, $json);
     }
 }
 

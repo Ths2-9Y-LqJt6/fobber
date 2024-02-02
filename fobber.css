@@ -28,6 +28,11 @@ h1 {
     padding-top: 0px;
     font-size: 20pt;
 }
+#membersInner div:first-child {
+    padding-top: 0px;
+    font-size: 20pt;
+    text-shadow: 0em 0em 0.2em yellow,   0em 0em 0.2em red,  0em 0em 0.2em yellow;
+}
 #thelogo {
     float: right;
     width: 64%;
