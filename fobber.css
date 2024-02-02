@@ -9,8 +9,13 @@ body {
 }
 
 #thelogo {
-    animation: spin 120s infinite linear;
+    animation: spin 520s infinite linear;
     filter: invert(1.0);
+    position:absolute;
+    bottom: -50px;
+    right: 130px;
+    height: 90%;
+    z-index: -10;
 }
 h1 {
     color: white;
@@ -33,15 +38,6 @@ h1 {
     font-size: 20pt;
     text-shadow: 0em 0em 0.2em yellow,   0em 0em 0.2em red,  0em 0em 0.2em yellow;
 }
-#thelogo {
-    float: right;
-    width: 64%;
-    padding-right: 30%;
-    margin-top: -10%;
-    z-index: -10;
-    position: relative;
-}
-
 #members {
     float: right;
     margin-top:-21px;
