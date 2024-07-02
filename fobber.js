@@ -67,11 +67,9 @@ function displayMembers(data){
     // update DOM with new fob events
     let div;
     if (data.total_door_access) {
-        const calc_vetted = data.total_vetted + data.total_free;
-        const calc_total = calc_vetted + data.total_not_vetted;
 
         div = document.createElement("div");
-        div.innerHTML = "Vetted: " + calc_vetted + "";
+        div.innerHTML = "Vetted: " + data.total_vetted + "";
         mainContainer.prepend(div);
 
         div = document.createElement("div");
@@ -79,7 +77,7 @@ function displayMembers(data){
         mainContainer.prepend(div);
 
         div = document.createElement("div");
-        div.innerHTML = "Total: " + calc_total + "";
+        div.innerHTML = "Total: " + data.total_membership + "";
         mainContainer.prepend(div);
 
     } else {
